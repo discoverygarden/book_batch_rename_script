@@ -13,3 +13,14 @@ The batch renaming script needs the following setup to ensure it functions corre
 The script will ask for the name of the book. This will become the folder name that all the pages will be placed in
 
 After the batch script creates the folder, the folder itself will need to be moved to a .zip file. Each subsequent book created with the batch renaming script may be placed in the same .zip file.
+
+Recommended Method
+========================
+
+Create a folder to copy or scan all your TIFF files into. Place rename_script.bat into it.
+
+Copy or scan a full book into the folder with sequentially named TIFFs. Run the batch script. Optionally, copy a MODS XML file into the base folder that the batch script creates.
+
+Copy or scan the next book into the same folder the first book was copied or scanned into. Run the same batch script. Continue for each subsequent book.
+
+Create a new .zip file in the folder with the batch script. Copy all of the book folders into that .zip file.
