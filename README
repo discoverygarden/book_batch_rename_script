@@ -1,4 +1,4 @@
-Islandora Book batch Rename Script
+Islandora Book Batch Rename Script
 ========================
 
 Renames a folder full of TIFF/XML/MRC files and moves them into the correct folders to prepare for ingest using the Islandora Book Batch module
