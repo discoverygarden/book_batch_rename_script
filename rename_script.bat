@@ -3,7 +3,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 echo *****************************************************************************
 echo *                    ISLANDORA BOOK BATCH RENAME SCRIPT                     *
 echo *                                                                           *
-echo * This batch script places a folder full of .tif files/ into a folder that   *
+echo * This batch script places a folder full of .tif files/ into a folder that  *
 echo * can be ingested using the Book Batch module. It is intended to be placed  *
 echo * in and run from the folder where the .tif files to be sorted are.         *
 echo *                                                                           *
