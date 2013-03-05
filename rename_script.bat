@@ -19,18 +19,27 @@ echo ***************************************************************************
 pause
 set /p book="Name of book: "
 mkdir "%book%"
-for /f %%i in ('dir /b *.xml') do (
+for /f %%x in ('dir /b *.xml') do (
 	move *.xml "!book!"
 	)
-for /f %%i in ('dir /b *.mrc') do (
+for /f %%c in ('dir /b *colourchecker*') do (
+	move *colourchecker* "!book!"
+	)
+for /f %%m in ('dir /b *.mrc') do (
 	move *.mrc "!book!"
 	)
 set /a c=1
-for /f "tokens=*" %%f in ('dir /b *.tif*') do (
+for /f "tokens=*" %%t in ('dir /b *.tif*') do (
 	mkdir !c!
-	rename "%%f" OBJ.tif
+	rename "%%t" OBJ.tif
 	move OBJ.tif !c!
 	move !c! "!book!"
+	set /a c=c+1
+	)
+set /a c=1
+for /f "tokens=*" %%d in ('dir /b *.dng') do (
+	rename "%%d" DNG.dng
+	move DNG.dng "!book!"/!c!
 	set /a c=c+1
 	)
 ENDLOCAL
