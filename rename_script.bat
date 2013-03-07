@@ -31,7 +31,7 @@ for /f "tokens=1" %%x in ('dir /b *.xml') do (
 for /f %%c in ('dir /b *colourchecker*') do (
 	move *colourchecker* "!book!"
 	)
-:: Throw in the first MARC binariey found
+:: Throw in the first MARC binary found
 for /f %%m in ('dir /b *.mrc') do (
 	move *.mrc "!book!"
 	)
