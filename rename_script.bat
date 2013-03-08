@@ -27,7 +27,7 @@ set /p book="Name of book: "
 mkdir "%book%"
 mkdir "%book%"_tmp
 :: Throw in the first XML found
-for /f "tokens=1" %%x in ('dir /b *.xml') do (
+for /f %%x in ('dir /b *.xml') do (
 	copy "%%x" "--METADATA--.xml"
 	move "--METADATA--.xml" "!book!"
 	move "%%x" "!book!"_tmp
