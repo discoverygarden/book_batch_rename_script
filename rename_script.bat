@@ -7,8 +7,7 @@ echo * This batch script takes a folder full of book files and sorts them into  
 echo * a folder that can be uploaded to the server staging area to be ingested.  *
 echo * It is compatible with .tif files that are paired with .dng negatives. It  *
 echo * accepts the first .mrc and .xml metadata file it finds, and adds in any   *
-echo * files containing the word 'colourchecker'. Only put in one .xml or .mrc;  *
-echo * duplicates will be overwritten.                                           *
+echo * files containing the word 'colourchecker'. Only put in one .xml or .mrc.  *
 echo *                                                                           *
 echo * This script will ask you for the name of the book and make a copy of all  *
 echo * your files into a folder with the name of the book you gave. It will also *
@@ -28,8 +27,8 @@ mkdir "%book%"
 mkdir "%book%"_tmp
 :: Throw in the first XML found
 for /f %%x in ('dir /b *.xml') do (
-	copy "%%x" "--METADATA--.xml"
-	move "--METADATA--.xml" "!book!"
+	copy *.xml --METADATA--.xml
+	move --METADATA--.xml "!book!"
 	move "%%x" "!book!"_tmp
 	)
 :: Move over all colourchecker files
@@ -38,9 +37,9 @@ for /f %%c in ('dir /b *colourchecker*') do (
 	move *colourchecker* "!book!"_tmp
 	)
 :: Throw in first MARC binary found
-for /f %%m in ('dir /b *.mrc') do (
-	copy "%%m" "--METADATA--.mrc"
-	move "--METADATA--.mrc" "!book!"
+for /f %%m in ('dir /b *.mrc*') do (
+	copy *.mrc --METADATA--.mrc
+	move --METADATA--.mrc "!book!"
 	move "%%m" "!book!"_tmp
 	)
 :: Set folder count
