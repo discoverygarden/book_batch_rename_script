@@ -26,21 +26,21 @@ set /p book="Name of book: "
 mkdir "%book%"
 mkdir "%book%"_tmp
 :: Throw in the first XML found
-for /f %%x in ('dir /b *.xml') do (
+if exist *.xml (
 	copy *.xml --METADATA--.xml
 	move --METADATA--.xml "!book!"
 	move "%%x" "!book!"_tmp
 	)
-:: Move over all colourchecker files
-for /f %%c in ('dir /b *colourchecker*') do (
-	copy *colourchecker* "!book!"
-	move *colourchecker* "!book!"_tmp
-	)
 :: Throw in first MARC binary found
-for /f %%m in ('dir /b *.mrc*') do (
+if exist *.mrc (
 	copy *.mrc --METADATA--.mrc
 	move --METADATA--.mrc "!book!"
 	move "%%m" "!book!"_tmp
+	)
+:: Move over all colourchecker files
+if exist *colourchecker* (
+	copy *colourchecker* "!book!"
+	move *colourchecker* "!book!"_tmp
 	)
 :: Set folder count
 set /a c=1
