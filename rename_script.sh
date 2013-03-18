@@ -1,13 +1,13 @@
 #!/bin/bash
 
 echo "*****************************************************************************"
-echo "* ISLANDORA BOOK BATCH RENAME SCRIPT                                        *"
+echo "*                     ISLANDORA BOOK BATCH RENAME SCRIPT                    *"
 echo "*                                                                           *"
 echo "* This batch script takes a folder full of book files and sorts them into   *"
-echo "* a folder that can be uploaded to the server staging area to be ingested.  *"
-echo "* It is compatible with .tif files that are paired with .dng negatives. It  *"
-echo "* accepts the first .mrc and .xml metadata file it finds, and adds in any   *"
-echo "* files containing the word 'colourchecker'. Only put in one .xml or .mrc.  *"
+echo "* a folder that can be added to a .zip file compatible with the Book Batch  *"
+echo "* module. It accepts the first .mrc and .xml metadata file it finds, and    *"
+echo "* all .tif or .tiff files, in alphabetical order. Only put in one .xml or   *"
+echo "* .mrc.                                                                     *"
 echo "*                                                                           *"
 echo "* This script will ask you for the name of the book and make a copy of all  *"
 echo "* your files into a folder with the name of the book you gave. It will also *"
@@ -40,33 +40,16 @@ then
   echo Single MRC found, processing ...
   cp *.mrc "$BOOK"/--METADATA--.mrc && mv *.mrc "$BOOK"_tmp
 fi
-# Move over all colourchecker files
-if [ -f *colourchecker* ]
-then
-  echo Colourcheckers present, processing ...
-  cp *colourchecker* "$BOOK"
-  mv *colourchecker* "$BOOK"_tmp
-fi
 # Set folder count
 c=1
-# Move over .tiffs and .dngs
+# Move over .tiffs
 for f in *.tif*
 do
   mkdir "$BOOK"/$c
   filenamet="${f%%.*}"
   echo Processing $filenamet ...
-  if [ -f "${f%%.*}".dng ]
-  then
-    d="${f%%.*}".dng
-    echo With matching dng ...
-    cp "$f" "$BOOK"/$c/OBJ.tif
-    cp "$d" "$BOOK"/$c/DNG.dng
-    mv "$f" "$BOOK"_tmp
-    mv "$d" "$BOOK"_tmp
-  else
-    cp "$f" "$BOOK"/$c/OBJ.tif
-    mv "$f" "$BOOK"_tmp
-  fi
+  cp "$f" "$BOOK"/$c/OBJ.tif
+  mv "$f" "$BOOK"_tmp
   let c=c+1
 done
 echo Cleaning up ...
