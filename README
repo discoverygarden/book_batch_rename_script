@@ -28,6 +28,12 @@ After the batch script creates the folder, the folder itself will need to be mov
 
 REQUIREMENTS
 ------------
+
+Module dependencies:
+ - islandora_book_batch
+ - islandora_batch
+ - islandora_importer
+
 rename_script.bat runs in Windows, and will work without any configuration on Windows NT or higher.
 
 rename_script.sh runs in Mac OS X and Linux; you will need to give it executable permissions (for example, by running chmod +x on it). It needs to be run through the standard terminal emulator; because of this, simply double-clicking on it may not work.
