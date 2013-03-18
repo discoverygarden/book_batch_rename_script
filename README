@@ -13,10 +13,11 @@ Renames a folder full of TIFF/XML/MRC files and moves them into the correct fold
 
 The batch renaming script needs the following setup to ensure it functions correctly:
 
- - A folder needs to be created containing all of the TIFF files for a single book and, optionally, an XML or MRC metadata file containing MODS, DC or MARCXML metadata as outlined above
- - The TIFF files in the folder need to be sequentially named, page to page, in alphabetical order, not numerical order.
-   This means, importantly, that the files need to be listed, for example, as 001.tif, 002.tif, ... 009.tif, 010.tif, and NOT as 1.tif, 2.tif, ... 9.tif, 10.tif. In the former case, pages would be sorted correctly, whereas in the latter, pages would be sorted as 1, 10, 2, ... 9
- - A copy of rename_script.bat needs to be pasted into the folder and then run
+ - A folder must be created containing all of the TIFF files for a single book.
+ - Optionally, an XML or MRC metadata file containing MODS, DC or MARCXML metadata may be placed in that same folder.
+ - The TIFF files in the folder must be sequentially named, page to page, in alphabetical order, not numerical order.
+   This means, importantly, that the files must be listed, for example, as 001.tif, 002.tif, ... 009.tif, 010.tif, and NOT as 1.tif, 2.tif, ... 9.tif, 10.tif. In the former case, pages would be sorted correctly, whereas in the latter, pages would be sorted as 1, 10, 2, ... 9
+ - A copy of rename_script.bat must be pasted into the folder and then run
 
 The script will ask for the name of the book. This will become the folder name that all the pages will be placed in
 
