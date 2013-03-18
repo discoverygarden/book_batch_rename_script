@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "*****************************************************************************"
-echo "* ISLANDORA BOOK BATCH RENAME SCRIPT                                        *"
+echo "*                    ISLANDORA BOOK BATCH RENAME SCRIPT                     *"
 echo "*                                                                           *"
 echo "* This batch script takes a folder full of book files and sorts them into   *"
 echo "* a folder that can be uploaded to the server staging area to be ingested.  *"
