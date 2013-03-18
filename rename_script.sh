@@ -23,6 +23,7 @@ echo "**************************************************************************
 # Ask for the book name
 echo "Name of book:"
 read BOOK
+cd "$( dirname "${BASH_SOURCE[0]}" )"
 mkdir "$BOOK"
 mkdir "$BOOK"_tmp
 # Throw in an XML
