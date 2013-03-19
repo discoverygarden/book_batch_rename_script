@@ -9,11 +9,42 @@ CONTENTS OF THIS FILE
 SUMMARY
 -------
 
-Renames a folder full of TIFF/XML/MRC files and moves them into the correct folders to prepare for ingest using the Islandora Book Batch module
+Renames a folder full of TIFF/XML/MRC files and moves them into the correct
+folders to prepare for ingest using the Islandora Book Batch module
 
-The batch renaming script needs the following setup to ensure it functions correctly:
+The batch renaming script needs the following setup to ensure it functions
+correctly:
 
  - A folder must be created containing all of the TIFF files for a single book.
+<<<<<<< HEAD
+ - Optionally, an XML or MRC metadata file containing MODS, DC or MARCXML
+   metadata may be placed in that same folder.
+ - The TIFF files in the folder must be sequentially named, page to page, in
+   alphabetical order, not numerical order. This means, importantly, that the
+   files must be listed, for example, as 001.tif, 002.tif, ... 009.tif, 010.tif,
+   and NOT as 1.tif, 2.tif, ... 9.tif, 10.tif. In the former case, pages would
+   be sorted correctly, whereas in the latter, pages would be sorted as 1, 10,
+   2, ... 9
+ - A copy of rename_script.bat or rename_script.sh, depending on your operating
+   system (see requirements below), must be pasted into the folder and then run
+
+The script will ask for the name of the book. This will become the folder name
+that all the pages will be placed in
+
+After the batch script creates the folder, the folder itself will need to be
+moved to a .zip file. Each subsequent book created with the batch renaming
+script may be placed in the same .zip file.
+
+REQUIREMENTS
+------------
+rename_script.bat runs in Windows, and will work without any configuration on
+Windows NT or higher.
+
+rename_script.sh runs in Mac OS X and Linux; you will need to give it
+executable permissions (for example, by running chmod +x on it). It needs to
+be run through the standard terminal emulator; because of this, simply double-
+clicking on it may not work.
+=======
  - Optionally, an XML or MRC metadata file containing MODS, DC or MARCXML metadata may be placed in that same folder.
  - The TIFF files in the folder must be sequentially named, page to page, in alphabetical order, not numerical order.
    This means, importantly, that the files must be listed, for example, as 001.tif, 002.tif, ... 009.tif, 010.tif, and NOT as 1.tif, 2.tif, ... 9.tif, 10.tif. In the former case, pages would be sorted correctly, whereas in the latter, pages would be sorted as 1, 10, 2, ... 9
@@ -32,13 +63,22 @@ Module Dependencies:
  - islandora_importer
 
 rename_script.bat runs in Windows, and will work without any configuration on Windows NT or higher.
+>>>>>>> c4a910d520822f6f54f9f116f016dc51b315ccf2
 
-rename_script.sh runs in Mac OS X and Linux; you will need to give it executable permissions (for example, by running chmod +x on it). It needs to be run through the standard terminal emulator; because of this, simply double-clicking on it may not work.
+Ingesting batches of books into Islandora requires:
+ - islandora_batch
+ - islandora_book_batch
+ - islandora_importer (if uploading from within Islandora as a .zip)
 
 INSTALLATION
 ------------
-Place the file that matches your operating system in the folder full of book files, and then run it from there. Only do one book at a time; do not place multiple books in the same folder.
+Place the file that matches your operating system in the folder full of book
+files, and then run it from there. Only do one book at a time; do not place
+multiple books in the same folder.
 
 TROUBLESHOOTING
 ---------------
-The most common reason for the script failing is that filenames in your folder aren't correct. Again, check that they are in alphabetical order, NOT numerical. It is best to place the numbering just before the extension. Also, be sure to check that filenames are consistent outside of your numbering.
+The most common reason for the script failing is that filenames in your folder
+aren't correct. Again, check that they are in alphabetical order, NOT numerical.
+It is best to place the numbering just before the extension. Also, be sure to
+check that filenames are consistent outside of your numbering.
