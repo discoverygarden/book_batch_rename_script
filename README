@@ -29,6 +29,11 @@ rename_script.bat runs in Windows, and will work without any configuration on Wi
 
 rename_script.sh runs in Mac OS X and Linux; you will need to give it executable permissions (for example, by running chmod +x on it). It needs to be run through the standard terminal emulator; because of this, simply double-clicking on it may not work.
 
+Ingesting batches of books into Islandora requires:
+ - islandora_batch
+ - islandora_book_batch
+ - islandora_importer (if uploading from within Islandora as a .zip)
+
 INSTALLATION
 ------------
 Place the file that matches your operating system in the folder full of book files, and then run it from there. Only do one book at a time; do not place multiple books in the same folder.
