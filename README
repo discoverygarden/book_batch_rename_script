@@ -44,8 +44,18 @@ the Book Batch documentation for more information.
 
 REQUIREMENTS
 ------------
+<<<<<<< HEAD
 rename_script.bat runs in Windows, and will work without any configuration on Windows NT
 or higher.
+=======
+
+Module dependencies:
+ - islandora_book_batch
+ - islandora_batch
+ - islandora_importer
+
+rename_script.bat runs in Windows, and will work without any configuration on Windows NT or higher.
+>>>>>>> 5e8294d799603af8099edddfa0da8a91a526721b
 
 rename_script.sh runs in Mac OS X and Linux; you will need to give it executable permissions
 (for example, by running chmod +x on it). It needs to be run through the standard terminal
