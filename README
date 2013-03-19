@@ -9,25 +9,44 @@ CONTENTS OF THIS FILE
 SUMMARY
 -------
 
-Renames a folder full of TIFF/XML/MRC/DNG/colourchecker files and moves them into the correct folders with the correct names to prepare for ingest using the Islandora Book Batch module.
+Renames a folder full of TIFF/XML/MRC/DNG/colourchecker files and moves them into the
+correct folders with the correct names to prepare for ingest using the Islandora Book
+Batch module.
 
 The batch renaming script needs the following setup to ensure it functions correctly:
 
  - A folder must be created containing all of the TIFF files for a single book.
- - Optionally, DNG files to be appended to each TIFF page as a DNG datastream may be placed in the folder.
- - Optionally, an XML or MRC metadata file containing MODS, DC or MARCXML metadata may be placed in that folder.
- - Optionally, colourchecker DNG files containing the word 'colourchecker' may be placed in that folder.
- - The TIFF files in the folder need to be sequentially named, page to page, in alphabetical order, not numerical order.
-   This means, importantly, that the files need to be listed, for example, as 001.tif, 002.tif, ... 009.tif, 010.tif, and NOT as 1.tif, 2.tif, ... 9.tif, 10.tif. In the former case, pages would be sorted correctly, whereas in the latter, pages would be sorted as 1, 10, 2, ... 9
- - Any DNG files that are to be appended to a TIFF page must have an identical filename to that page, with the exception of the .dng extension. For example, page_007.tiff and page_007.dng would be sorted together, whereas page_07.dng would not be.
- - A copy of rename_script.bat or rename_script.sh (depending on your OS) must be pasted into the folder and then run.
+ - Optionally, DNG files to be appended to each TIFF page as a DNG datastream may be 
+   placed in the folder.
+ - Optionally, an XML or MRC metadata file containing MODS, DC or MARCXML metadata may
+   be placed in that folder.
+ - Optionally, colourchecker DNG files containing the word 'colourchecker' may be 
+   placed in that folder.
+ - The TIFF files in the folder need to be sequentially named, page to page, in 
+   alphabetical order, not numerical order.
+   This means, importantly, that the files need to be listed, for example, as 001.tif,
+   002.tif, ... 009.tif, 010.tif, and NOT as 1.tif, 2.tif, ... 9.tif, 10.tif. In the
+   former case, pages would be sorted correctly, whereas in the latter, pages would be
+   sorted as 1, 10, 2, ... 9
+ - Any DNG files that are to be appended to a TIFF page must have an identical filename
+   to that page, with the exception of the .dng extension. For example, page_007.tiff
+   and page_007.dng would be sorted together, whereas page_07.dng would not be.
+ - A copy of rename_script.bat or rename_script.sh (depending on your OS) must be pasted
+   into the folder and then run.
 
-The script will ask for the name of the book. This will become the folder name that all the pages will be placed in.
+The script will ask for the name of the book. This will become the folder name that all
+the pages will be placed in.
 
-After the batch script creates the folder, the folder itself will need to be moved to the server staging area. Each subsequent book created with the batch renaming script may be placed in the server staging area before the batch ingest cron job is run. Please check the Book Batch documentation for more information.
+After the batch script creates the folder, the folder itself will need to be moved to the
+server staging area. Each subsequent book created with the batch renaming script may be
+placed in the server staging area before the batch ingest cron job is run. Please check
+the Book Batch documentation for more information.
 
 REQUIREMENTS
 ------------
+rename_script.bat runs in Windows, and will work without any configuration on Windows NT
+or higher.
+=======
 
 Module dependencies:
  - islandora_book_batch
@@ -36,12 +55,24 @@ Module dependencies:
 
 rename_script.bat runs in Windows, and will work without any configuration on Windows NT or higher.
 
-rename_script.sh runs in Mac OS X and Linux; you will need to give it executable permissions (for example, by running chmod +x on it). It needs to be run through the standard terminal emulator; because of this, simply double-clicking on it may not work.
+rename_script.sh runs in Mac OS X and Linux; you will need to give it executable permissions
+(for example, by running chmod +x on it). It needs to be run through the standard terminal
+emulator; because of this, simply double-clicking on it may not work.
+
+Ingesting batches of books into Islandora requires:
+ - islandora_batch
+ - islandora_book_batch
+ - islandora_importer (if uploading from within Islandora as a .zip)
 
 INSTALLATION
 ------------
-Place the file that matches your operating system in the folder full of book files, and then run it from there. Only do one book at a time; do not place multiple books in the same folder.
+Place the file that matches your operating system in the folder full of book files, and then
+run it from there. Only do one book at a time; do not place multiple books in the same folder.
 
 TROUBLESHOOTING
 ---------------
-The most common reason for the script failing is that filenames in your folder aren't correct. Again, check that they are in alphabetical order, NOT numerical, and that DNG and TIFF names match. It is best to place the numbering just before the extension. Also, be sure to check that filenames are consistent outside of your numbering; this can help to make sure they are sorted correctly.
+The most common reason for the script failing is that filenames in your folder aren't correct.
+Again, check that they are in alphabetical order, NOT numerical, and that DNG and TIFF names
+match. It is best to place the numbering just before the extension. Also, be sure to check that
+filenames are consistent outside of your numbering; this can help to make sure they are sorted
+correctly.
