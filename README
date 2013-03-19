@@ -16,7 +16,6 @@ The batch renaming script needs the following setup to ensure it functions
 correctly:
 
  - A folder must be created containing all of the TIFF files for a single book.
-<<<<<<< HEAD
  - Optionally, an XML or MRC metadata file containing MODS, DC or MARCXML
    metadata may be placed in that same folder.
  - The TIFF files in the folder must be sequentially named, page to page, in
@@ -63,7 +62,6 @@ Module Dependencies:
  - islandora_importer
 
 rename_script.bat runs in Windows, and will work without any configuration on Windows NT or higher.
->>>>>>> c4a910d520822f6f54f9f116f016dc51b315ccf2
 
 Ingesting batches of books into Islandora requires:
  - islandora_batch
