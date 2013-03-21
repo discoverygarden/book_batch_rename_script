@@ -19,7 +19,7 @@ echo * BEFORE RUNNING THIS SCRIPT. The script cannot check for mistakes in the  
 echo * original filenames and will sort indiscriminately. If you notice files    *
 echo * sorted incorrectly in the new directory, remove it, check your file names *
 echo * and try again. Otherwise, you may remove the originals if you wish.       *
-echo ***************************************************************************** 
+echo *****************************************************************************
 pause
 :: Ask for the book name
 set /p book="Name of book: "
@@ -27,49 +27,45 @@ mkdir "%book%"
 mkdir "%book%"_tmp
 :: Throw in the first XML found
 if exist *.xml (
+	echo XML found, processing ...
 	copy *.xml --METADATA--.xml
 	move --METADATA--.xml "!book!"
 	move "%%x" "!book!"_tmp
 	)
 :: Throw in first MARC binary found
 if exist *.mrc (
+	echo MARC Binary found, processing ...
 	copy *.mrc --METADATA--.mrc
 	move --METADATA--.mrc "!book!"
 	move "%%m" "!book!"_tmp
 	)
 :: Move over all colourchecker files
 if exist *colourchecker* (
+	echo Colourchecker[s] found, processing ...
 	copy *colourchecker* "!book!"
 	move *colourchecker* "!book!"_tmp
 	)
 :: Set folder count
 set /a c=1
 :: Move over .tiffs and .dngs
-:tiffdngloop
 for /f "tokens=*" %%t in ('dir /b *.tif*') do (
-	mkdir !c!
+	mkdir "!book!"\!c!
 	set filenamet=%%~nt
 	:: Searches for a matching filename and if found, renames and exits loop
-	for /f "tokens=*" %%d in ('dir /b *.dng') do (
-		set filenamed=%%~nd
-		if "!filenamet!"=="!filenamed!" (
-			copy "%%t" OBJ.tif
-			move OBJ.tif "!c!"
-			copy "%%d" DNG.dng
-			move DNG.dng "!c!"
-			move "!c!" "!book!"
-			move "%%t" "!book!"_tmp
-			move "%%d" "!book!"_tmp
-			set /a c=c+1
-			goto tiffdngloop
-			)
+	echo "!filenamet!"
+	if exist "!filenamet!".dng (
+		set d="!filenamet!".dng
+		copy "%%t" "!book!"\!c!\OBJ.tif
+		copy !d! "!book!"\!c!\DNG.dng
+		move "%%t" "!book!"_tmp
+		move !d! "!book!"_tmp
+	) else (
+		copy "%%t" "!book!"\!c!\OBJ.tif
+		move "%%t" "!book!"_tmp
 		)
-	copy "%%t" OBJ.tif
-	move OBJ.tif "!c!"
-	move "!c!" "!book!"
-	move "%%t" "!book!"_tmp
 	set /a c=c+1
 	)
 move "!book!"_tmp\*.* .\
 rmdir "!book!"_tmp
+pause
 ENDLOCAL
