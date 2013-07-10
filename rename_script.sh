@@ -50,7 +50,7 @@ fi
 # Set folder count
 c=1
 # Move over .tiffs and .dngs
-for f in *.tif*
+for f in *.tif *.tiff *.TIF *.TIFF
 do
   mkdir "$BOOK"/$c
   filenamet="${f%%.*}"
