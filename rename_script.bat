@@ -48,7 +48,7 @@ if exist *colourchecker* (
 :: Set folder count
 set /a c=1
 :: Move over .tiffs and .dngs
-for /f "tokens=*" %%t in ('dir /b *.tif*') do (
+for /f "tokens=*" %%t in ('dir /b *.tif' 'dir /b *.tiff' 'dir /b *.TIF' 'dir /b *.TIFF') do (
 	mkdir "!book!"\!c!
 	set filenamet=%%~nt
 	:: Searches for a matching filename and if found, renames and exits loop
