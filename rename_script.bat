@@ -41,7 +41,7 @@ if exist *.mrc (
 set /a c=1
 :: Move over .tiffs
 :tiffloop
-for /f "tokens=*" %%t in ('dir /b *.tif*') do (
+for /f "tokens=*" %%t in ('dir /b *.tif' 'dir /b *.tiff' 'dir /b *.TIF' 'dir /b *.TIFF') do (
 	mkdir !c!
 	set filenamet=%%~nt
 	copy "%%t" OBJ.tif
